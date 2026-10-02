@@ -7,16 +7,27 @@ CFG="$DIR/config/user-config.json"
 # localiza o burpsuite.jar (ajuste BURP_JAR no ambiente se necessário)
 BURP_JAR="${BURP_JAR:-}"
 if [ -z "$BURP_JAR" ]; then
+  # 1) nomes/locais conhecidos (rápido) — cobre as variações de branding do
+  #    instalador da PortSwigger ("Burp Suite.app" unificado, ou as antigas
+  #    "Professional"/"Community Edition") em mac e linux.
   for c in \
-    "$HOME/BurpSuite/burpsuite.jar" "$HOME/BurpSuite/burpsuite_pro.jar" \
-    /opt/BurpSuite*/burpsuite*.jar \
-    "/Applications/Burp Suite Professional.app/Contents/Resources/app/burpsuite_pro.jar" \
-    "/Applications/Burp Suite Community Edition.app/Contents/Resources/app/burpsuite_community.jar" \
-    "$HOME/Applications/Burp Suite Professional.app/Contents/Resources/app/"*.jar; do
+    "$HOME/BurpSuite/burpsuite.jar" "$HOME/BurpSuite/burpsuite_pro.jar" "$HOME/BurpSuite/burpsuite_community.jar" \
+    /opt/BurpSuite*/burpsuite*.jar /opt/burpsuite*/burpsuite*.jar \
+    /Applications/"Burp Suite"*.app/Contents/Resources/app/burpsuite*.jar \
+    "$HOME/Applications/Burp Suite"*.app/Contents/Resources/app/burpsuite*.jar; do
     [ -f "$c" ] && { BURP_JAR="$c"; break; }
   done
 fi
-[ -f "$BURP_JAR" ] || { echo "burpsuite jar não encontrado — exporte BURP_JAR=/caminho/para/burpsuite.jar"; exit 1; }
+if [ -z "$BURP_JAR" ] && command -v mdfind >/dev/null 2>&1; then
+  # 2) macOS: Spotlight já tem isso indexado, é instantâneo
+  BURP_JAR=$(mdfind "kMDItemFSName == 'burpsuite*.jar'" 2>/dev/null | head -1)
+fi
+if [ -z "$BURP_JAR" ]; then
+  # 3) fallback: busca em disco nos lugares mais prováveis
+  BURP_JAR=$(find /Applications "$HOME/Applications" /opt "$HOME/BurpSuite" "$HOME/.local/share" \
+    -maxdepth 6 -iname 'burpsuite*.jar' 2>/dev/null | head -1)
+fi
+[ -n "$BURP_JAR" ] && [ -f "$BURP_JAR" ] || { echo "burpsuite jar não encontrado — instale o Burp Suite (https://portswigger.net/burp) ou exporte BURP_JAR=/caminho/para/burpsuite.jar"; exit 1; }
 [ -f "$CFG" ] || { echo "config ausente — rode ./bootstrap.sh config primeiro"; exit 1; }
 
 # escolhe o java: o do sistema, ou o JRE embutido no .app do Burp (macOS)

@@ -30,6 +30,7 @@ jqpy(){ python3 -c "import json,sys; d=json.load(open('$1')); $2"; }
 # ---------------------------------------------------------------- jython
 do_jython(){
   hdr "runtime jython"
+  mkdir -p "$DIR/runtimes"
   local dest="$DIR/runtimes/jython-standalone.jar"
   if [ -f "$dest" ]; then c_ok "jython já em runtimes/"; return; fi
   local local_jar
@@ -100,7 +101,8 @@ ensure_pipx(){
   command -v pipx >/dev/null 2>&1 && return 0
   python3 -m pip install --user --break-system-packages pipx >/dev/null 2>&1
   python3 -m pipx ensurepath >/dev/null 2>&1 || true
-  command -v pipx >/dev/null 2>&1 || alias pipx="python3 -m pipx"
+  # aliases não são expandidos em scripts não-interativos; usa uma função como fallback
+  command -v pipx >/dev/null 2>&1 || pipx(){ python3 -m pipx "$@"; }
 }
 
 install_release(){ # repo asset_match name
@@ -158,6 +160,7 @@ do_cli(){
 # ---------------------------------------------------------------- config
 do_config(){
   hdr "render config/user-config.json (a partir do manifest)"
+  mkdir -p "$DIR/config"
   DIR="$DIR" python3 - "$EXT_MANIFEST" <<'PY'
 import json, os, sys
 DIR=os.environ["DIR"]

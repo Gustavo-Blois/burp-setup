@@ -29,6 +29,21 @@ brew install git-lfs     # macOS. Linux: pacman/apt install git-lfs
 git lfs install
 ```
 
+## Prerequisite: Burp Suite itself
+
+Burp Suite is commercial/licensed software from PortSwigger, so the jar isn't in this repo — you
+need it installed separately: https://portswigger.net/burp (Community is free, no license needed).
+
+`launch.sh` auto-detects it in the usual install locations (`/Applications/Burp Suite*.app` and
+`~/Applications/...` on macOS, `~/BurpSuite/`, `/opt/BurpSuite*/` on Linux), falling back to
+Spotlight (`mdfind`) on macOS and a disk search otherwise. If it still can't find it — a custom
+install path, for instance — point it at the jar directly:
+
+```bash
+export BURP_JAR=/path/to/burpsuite.jar
+./launch.sh
+```
+
 ## On a new machine
 
 Clone it wherever you want. The scripts locate themselves, so the location doesn't matter.
