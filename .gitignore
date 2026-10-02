@@ -1,0 +1,13 @@
+# extensions/ É versionado (jars via LFS, py como texto) para o mac clonar sem clicar na Store.
+
+# runtimes: jython baixado do Maven pelo bootstrap (URL estável) — não versionar
+runtimes/
+# binários de CLI reconstruídos pelo bootstrap
+bin/
+tools/
+# config renderizada por máquina (caminhos absolutos; pode conter chaves)
+config/user-config.json
+
+# ruído
+*.log
+.DS_Store

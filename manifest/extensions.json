@@ -1,0 +1,30 @@
+{
+  "_comment": "Source of truth for the Burp extensions. bootstrap ensures the files under extensions/<id>/ and generates the config from here. source: local-cache (copy from ~/.BurpSuite/bapps/<id>, id=uuid) | download (fetch files[].url) | build (Java, compile from source) | store-only (no OSS source; install from the BApp Store). 'entry' is the file Burp loads.",
+  "extensions": [
+    { "id": "f9bbac8c4acf4aefa4d7dc92a991af2f", "name": "Autorize",                        "type": "python", "entry": "Autorize.py",                                           "source": "local-cache", "url": "https://github.com/Quitten/Autorize" },
+    { "id": "17d2949a985c4b7ca092728dba871943", "name": "Param Miner",                     "type": "java",   "entry": "param-miner-all.jar",                                  "source": "local-cache", "url": "https://github.com/PortSwigger/param-miner" },
+    { "id": "9abaa233088242e8be252cd4ff534988", "name": "Turbo Intruder",                 "type": "java",   "entry": "turbo-intruder.jar",                                   "source": "local-cache", "url": "https://github.com/PortSwigger/turbo-intruder" },
+    { "id": "470b7057b86f41c396a97903377f3d81", "name": "Logger++",                        "type": "java",   "entry": "releases/LoggerPlusPlus.jar",                          "source": "local-cache", "url": "https://github.com/nccgroup/LoggerPlusPlus/releases" },
+    { "id": "815bb4ab64e240618dc673d65016e919", "name": "GAP",                             "type": "python", "entry": "GAP.py",                                               "source": "local-cache", "url": "https://github.com/xnl-h4ck3r/GAP-Burp-Extension" },
+    { "id": "594a49bb233748f2bc80a9eb18a2e08f", "name": "Wsdler",                          "type": "java",   "entry": "wsdler.jar",                                           "source": "local-cache", "url": "https://github.com/NetSPI/Wsdler" },
+    { "id": "26aaa5ded2f74beea19e2ed8345a93dd", "name": "JWT Editor",                      "type": "java",   "entry": "jwt-editor-2.6.2.jar",                                 "source": "local-cache", "url": "https://github.com/portswigger/jwt-editor/releases" },
+    { "id": "239c6b45a4ae4834acc90202566a1aac", "name": "PwnFox For Chromium",             "type": "java",   "entry": "PwnFox-For-Chromium-1.3.4-jar-with-dependencies.jar",   "source": "local-cache", "url": "https://github.com/yeswehack/PwnFox/releases" },
+    { "id": "b578b99348ba458ea65dddacc6d404d6", "name": "Copy as FFUF Command",            "type": "python", "entry": "burp_ffuf_copy.py",                                    "source": "local-cache", "url": "https://github.com/Hancheng-Lei/Hacking-Burpsuite-Copy-as-FFUF" },
+    { "id": "ef36a66ebeb04412a52ffc17c2f5e15e", "name": "Decompressor",                    "type": "java",   "entry": "dist/burp-decompressor.jar",                           "source": "local-cache", "url": "https://github.com/PortSwigger/decompressor" },
+    { "id": "618f0b2489564607825e93eeed8b9e0a", "name": "Burp Bounty - Scan Check Builder", "type": "java",  "entry": "build/libs/scan-check-builder.jar",                    "source": "local-cache", "url": "https://github.com/wagiro/BurpBounty/releases" },
+
+    { "id": "403-bypasser",  "name": "403 Bypasser",   "type": "python", "entry": "403Bypasser.py",      "source": "download", "url": "https://github.com/PortSwigger/403-bypasser",
+      "files": [
+        { "path": "403Bypasser.py",       "url": "https://raw.githubusercontent.com/PortSwigger/403-bypasser/master/403Bypasser.py" },
+        { "path": "header payloads.txt",  "url": "https://raw.githubusercontent.com/PortSwigger/403-bypasser/master/header%20payloads.txt" },
+        { "path": "query payloads.txt",   "url": "https://raw.githubusercontent.com/PortSwigger/403-bypasser/master/query%20payloads.txt" }
+      ] },
+    { "id": "js-link-finder", "name": "JS Link Finder", "type": "python", "entry": "FransLinkfinder.py", "source": "download", "url": "https://github.com/PortSwigger/js-link-finder",
+      "files": [
+        { "path": "FransLinkfinder.py", "url": "https://raw.githubusercontent.com/PortSwigger/js-link-finder/master/FransLinkfinder.py" }
+      ] },
+
+    { "id": "flow",      "name": "Flow",      "type": "java", "entry": "flow.jar",      "source": "build", "url": "https://github.com/PortSwigger/flow",      "repo": "https://github.com/PortSwigger/flow", "srcdir": "src", "api": "1.7.22", "release": "17", "note": "Compiled from source with javac (jar committed via LFS; bootstrap rebuilds it if missing)." },
+    { "id": "reflector", "name": "Reflector", "type": "java", "entry": "reflector.jar", "source": "build", "url": "https://github.com/elkokc/reflector", "repo": "https://github.com/elkokc/reflector", "srcdir": "src", "api": "1.7.22", "release": "17", "note": "Compiled from source with javac (jar committed via LFS; bootstrap rebuilds it if missing)." }
+  ]
+}

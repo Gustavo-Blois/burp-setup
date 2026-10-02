@@ -1,0 +1,3 @@
+# Binários grandes das extensões vão via Git LFS (clone leve, sem aviso do GitHub >50MB).
+# Cobre os .jar das 11 extensões de cache (turbo-intruder 50MB, logger++ 20MB, etc).
+*.jar filter=lfs diff=lfs merge=lfs -text

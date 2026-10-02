@@ -1,0 +1,13 @@
+Uuid: 470b7057b86f41c396a97903377f3d81
+ExtensionType: 1
+Name: Logger++
+RepoName: logger-plus-plus
+ScreenVersion: 3.20.0
+SerialVersion: 22
+MinPlatformVersion: 8
+ProOnly: False
+Author: Corey Arthur, NCC Group
+ShortDescription: Logs requests and responses for all Burp tools in a sortable table.
+EntryPoint: releases/LoggerPlusPlus.jar
+BuildCommand: ./gradlew jar
+SupportedProducts: Pro, Community

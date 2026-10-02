@@ -1,0 +1,14 @@
+{
+  "_comment": "Command-line tools mentioned in the transcript. 'method' tells bootstrap how to install each one. gau is already in ~/go/bin (watch out: a shell alias 'gau=git add --update' shadows it).",
+  "tools": [
+    { "name": "httpx",       "check": "httpx",       "method": "go",    "pkg": "github.com/projectdiscovery/httpx/cmd/httpx@latest" },
+    { "name": "nuclei",      "check": "nuclei",      "method": "go",    "pkg": "github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest" },
+    { "name": "waybackurls", "check": "waybackurls", "method": "go",    "pkg": "github.com/tomnomnom/waybackurls@latest" },
+    { "name": "gau",         "check": "gau",         "method": "go",    "pkg": "github.com/lc/gau/v2/cmd/gau@latest" },
+    { "name": "waymore",     "check": "waymore",     "method": "pipx",  "pkg": "waymore" },
+    { "name": "arjun",       "check": "arjun",       "method": "pipx",  "pkg": "arjun" },
+    { "name": "x8",          "check": "x8",          "method": "cargo", "pkg": "x8", "release_repo": "Sh1Yo/x8", "release_asset_linux": "x86_64-linux" },
+    { "name": "sqlmap",      "check": "sqlmap",      "method": "gitclone", "repo": "https://github.com/sqlmapproject/sqlmap", "entry": "sqlmap.py" },
+    { "name": "screen",      "check": "screen",      "method": "system", "pkg_brew": "screen", "pkg_pacman": "screen", "pkg_apt": "screen", "note": "macOS usually ships screen at /usr/bin/screen" }
+  ]
+}

@@ -1,0 +1,13 @@
+Uuid: b578b99348ba458ea65dddacc6d404d6
+ExtensionType: 2
+Name: Copy as FFUF Command
+RepoName: copy-as-ffuf-command
+ScreenVersion: 1.0
+SerialVersion: 1
+MinPlatformVersion: 0
+ProOnly: False
+Author: Enes Saltik
+ShortDescription: Generate FFUF commands from requests.
+EntryPoint: burp_ffuf_copy.py
+BuildCommand: 
+SupportedProducts: Pro, Community

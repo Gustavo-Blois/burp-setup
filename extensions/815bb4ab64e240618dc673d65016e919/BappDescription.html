@@ -1,0 +1,29 @@
+<p>This extension collects all parameter names observed during scanning or manual testing and makes them accessible in a dedicated tab. It assists in identifying hidden, undocumented, or parameter pollution opportunities across the target application.</p>
+
+<h2>Features</h2>
+<ul>
+  <li>Captures all parameters from HTTP requests and responses</li>
+  <li>Displays parameters in a dedicated "Get All Parameters" tab</li>
+  <li>Includes source information for each parameter (e.g. URL, body, cookie)</li>
+  <li>Highlights unique and duplicate parameter names</li>
+  <li>Supports exporting the parameter list for offline analysis</li>
+</ul>
+
+<h2>Usage</h2>
+<p>To use the extension:</p>
+<ol>
+  <li>Browse or scan your target application as usual.</li>
+  <li>Right-click on a target in your Burp sitemap (or multiple targets), or even just one subfolder or endpoint, and use the extension-generated context menu item to "Send to GAP".</li>
+  <li>Open the "Get All Parameters" tab to view the aggregated list of observed parameters.</li>
+  <li>Use the interface to filter, sort, or search parameters of interest.</li>
+  <li>Optionally, export the list for external processing or further analysis.</li>
+</ol>
+
+<h2>Performance Tips</h2>
+<ul>
+  <li>Disable any scanning modes you don't need to speed up results.</li>
+  <li>When running GAP from the Site Map view, avoid expanding large targets beforehand as this significantly slows performance. For better efficiency, run GAP on one or two targets at a time.</li>
+  <li>To scan specific requests, use the Site Map Contents view or Proxy History instead of selecting items from the Site Map tree, as this is much faster.</li>
+  <li>If UI elements are not fully visible due to screen resolution or font size, hold down <code class="InlineCode">Ctrl</code> and click the GAP logo header image to hide it and reveal more space.</li>
+  <li>The "Words" mode relies on the <code class="InlineCode">beautifulsoup4</code> library, which may be slow. Please be patient while it runs.</li>
+</ul>

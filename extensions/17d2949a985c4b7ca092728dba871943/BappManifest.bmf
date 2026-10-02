@@ -1,0 +1,13 @@
+Uuid: 17d2949a985c4b7ca092728dba871943
+ExtensionType: 1
+Name: Param Miner
+RepoName: param-miner
+ScreenVersion: 1.59
+SerialVersion: 39
+MinPlatformVersion: 27
+ProOnly: False
+Author: James Kettle, PortSwigger
+ShortDescription: This extension identifies hidden, unlinked parameters. It's particularly useful for finding web cache poisoning vulnerabilities.
+EntryPoint: param-miner-all.jar
+BuildCommand: ./gradlew build fatJar
+SupportedProducts: Pro, Community
