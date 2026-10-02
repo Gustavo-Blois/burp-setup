@@ -34,7 +34,7 @@ git lfs install
 Clone it wherever you want. The scripts locate themselves, so the location doesn't matter.
 
 ```bash
-git clone <repo> burp-setup
+git clone https://github.com/Gustavo-Blois/burp-setup.git burp-setup
 cd burp-setup
 ./bootstrap.sh all      # jython, extensions, CLI, config
 ./launch.sh             # opens Burp with the 15 extensions loaded
