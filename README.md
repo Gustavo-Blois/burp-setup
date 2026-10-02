@@ -31,22 +31,24 @@ git lfs install
 
 ## On a new machine
 
+Clone it wherever you want. The scripts locate themselves, so the location doesn't matter.
+
 ```bash
-git clone <repo> ~/Projects/trabalho/burp-setup
-cd ~/Projects/trabalho/burp-setup
+git clone <repo> burp-setup
+cd burp-setup
 ./bootstrap.sh all      # jython, extensions, CLI, config
 ./launch.sh             # opens Burp with the 15 extensions loaded
 ```
 
-Add to PATH (see `./bootstrap.sh doctor`):
+Add to PATH. `./bootstrap.sh doctor` prints these lines filled in with the actual repo path:
 
 ```fish
 # fish
-set -gx PATH $PATH ~/Projects/trabalho/burp-setup/bin (go env GOPATH)/bin ~/.local/bin
+set -gx PATH $PATH (pwd)/bin (go env GOPATH)/bin ~/.local/bin
 ```
 ```zsh
 # zsh (default on macOS)
-export PATH="$PATH:$HOME/Projects/trabalho/burp-setup/bin:$(go env GOPATH)/bin:$HOME/.local/bin:$HOME/.cargo/bin"
+export PATH="$PATH:$(pwd)/bin:$(go env GOPATH)/bin:$HOME/.local/bin:$HOME/.cargo/bin"
 ```
 
 ## Extensions (15)
